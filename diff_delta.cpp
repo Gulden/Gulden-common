@@ -1,4 +1,4 @@
-// Copyright (c) 2015-2016 The Gulden developers
+// Copyright (c) 2015-2017 The Gulden developers
 // Authored by: Frank (dt_cdog@yahoo.com) and Malcolm MacLeod (mmacleod@webmail.co.za)
 // Distributed under the GULDEN software license, see the accompanying
 // file COPYING
@@ -169,7 +169,7 @@ unsigned int GetNextWorkRequired_DELTA (const INDEX_TYPE pindexLast, const BLOCK
     }
 
     // -- Calculate time interval for middle window
-    if (INDEX_HEIGHT(pindexLast) - nFirstDeltaBlock <= nMiddleFrame)
+    if (INDEX_HEIGHT(pindexLast) - (int)nFirstDeltaBlock <= (int)nMiddleFrame)
     {
         nMiddleWeight = nMiddleTimespan = 0;
     }
@@ -195,7 +195,7 @@ unsigned int GetNextWorkRequired_DELTA (const INDEX_TYPE pindexLast, const BLOCK
 
     // -- Calculate timespan for long window
     // NB! No need to worry about single negative block times as it has no significant influence over this many blocks.
-    if (INDEX_HEIGHT(pindexLast) - nFirstDeltaBlock <= nLongFrame)
+    if ((int)INDEX_HEIGHT(pindexLast) - (int)nFirstDeltaBlock <= (int)nLongFrame)
     {
         nLongWeight = nLongTimespan = 0;
     }
